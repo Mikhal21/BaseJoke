@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jokes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/styles.css' %}">
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'app:index' %}">Home</a></li>
+            <li><a href="{% url 'app:add' %}">Add Joke</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

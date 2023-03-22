@@ -1,0 +1,210 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #2d9cdb;
+}
+
+.joke-list {
+    list-style: none;
+    padding: 0;
+}
+
+.joke-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.joke-item:hover {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.joke-text {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2d9cdb;
+    word-wrap: break-word;
+}
+
+.joke-meta {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+nav {
+    background-color: #2d9cdb;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.highlighted {
+    position: relative;
+    background-color: #7ef7f7;
+    box-shadow: 0 0 10px #42b0be;
+    transition: all 0.3s ease-in-out;
+}
+
+.highlighted::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 20px 0;
+    border-color: transparent #64dbeb transparent transparent;
+}
+
+.highlighted::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 10px 0 0;
+    border-color: #42b0be transparent transparent transparent;
+}
+
+.highlighted:hover {
+    background-color: #d4fcff;
+    box-shadow: 0 0 20px #42b0be;
+}
+
+.highlighted:hover::before {
+    border-color: transparent #d4fcff transparent transparent;
+}
+
+.highlighted:hover::after {
+    border-color: #d4fcff transparent transparent transparent;
+}
+
+.joke-share {
+    margin-top: 10px;
+}
+
+.joke-share a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #2d9cdb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.joke-share a:hover {
+    background-color: #2b8ac6;
+}
+
+/* Copiez-collez le code CSS ici */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+label {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+button[type="submit"] {
+    background-color: #2d9cdb;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #2b8bc6;
+}
+
+.errorlist {
+    color: red;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+/* 
+nav {
+    background-color: #2d9cdb;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+} */

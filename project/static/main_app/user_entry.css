@@ -1,0 +1,18 @@
+const userEntryContainer = document.getElementById("user-entry-container");
+
+fetch(`/app/entry/${id}/`)
+  .then(response => response.json())
+  .then(data => {
+    const userEntry = document.createElement("div");
+    userEntry.classList.add("user-entry");
+    userEntry.innerHTML = `
+      <h2>${data.author}</h2>
+      <p>${data.text}</p>
+      <p class="date">${data.date}</p>
+    `;
+    userEntryContainer.appendChild(userEntry);
+  })
+  .catch(error => {
+    console.error(error);
+    userEntryContainer.innerHTML = `<p>Error retrieving user entry data.</p>`;
+  });
