@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .models import Quote
+from .models import Quote, Person
+from django.http import HttpResponseRedirect
+
 
 from django import forms
 
@@ -16,7 +18,7 @@ quotes = {
 # Form for entering a quote
 class QuoteForm(forms.Form):
     quote = forms.CharField(label='Quote', max_length=120, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    author = forms.CharField(label='Author', max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    author = forms.ModelChoiceField(queryset=Person.objects.all())
 
 
 # index page displaying all entries
@@ -37,27 +39,24 @@ def index(request):
     return render(request, 'app/index.html', {'quotes': quotes})
 
 # page for adding new entries
-def add(request):
-    global id
 
+
+def add(request):
     if request.method == 'POST':
         form = QuoteForm(request.POST)
         if form.is_valid():
-            id = len(quotes) + 1
-            quotes[id] = {
-                'id': id,
-                'text': form.cleaned_data['quote'],
-                'author': form.cleaned_data['author']
-            }
-            
-            # add GET request parameter to highlight correct quote
-            response = redirect('app:index')
-            response['Location'] += f'?highlight={id}'
-            return response
+            author = form.cleaned_data['author']
+            quote_content = form.cleaned_data['quote']
+            quote = Quote(text=quote_content, author=author)  # update here
+            quote.save()
+            return HttpResponseRedirect('/')
     else:
         form = QuoteForm()
+    return render(request, 'app/add.html', {'form': form})
 
-    return render(request, 'app/add.html', { 'form': form })
+
+
+
 
 # get JSON version of an entry
 def get_user_entry(request, id):
