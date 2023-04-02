@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-  <h1>Add a joke</h1>
+  <h1>Add a quote</h1>
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}

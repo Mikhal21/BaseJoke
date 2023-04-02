@@ -1,6 +1,6 @@
-# BaseJoke
+# BaseQuote
 
-A baseline Joke website to create models from.
+A baseline Quote website to create models from.
 
 Run it with `python manage.py runserver`.
 

@@ -4,23 +4,23 @@ from django.shortcuts import render, redirect
 
 from django import forms
 
-jokes = {
+quotes = {
     '1': {
         'id': 1,
-        'text': 'Why did the tomato turn red? Because it saw the salad dressing!',
-        'author': 'Anna'
+        'text': 'I have learne that there is no failure in running or in life as long as you keep moving',
+        'author': 'Amby Burfoot'
     }
 }
 
-# Form for entering a joke
-class JokeForm(forms.Form):
-    joke = forms.CharField(label='Joke', max_length=120, widget=forms.TextInput(attrs={'class': 'form-control'}))
+# Form for entering a quote
+class QuoteForm(forms.Form):
+    quote = forms.CharField(label='Quote', max_length=120, widget=forms.TextInput(attrs={'class': 'form-control'}))
     author = forms.CharField(label='Author', max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
 # index page displaying all entries
 def index(request):
-    rendered = render(request, 'app/index.html', {'jokes': jokes.values()})
+    rendered = render(request, 'app/index.html', {'quotes': quotes.values()})
     highlight = request.GET.get('highlight')
     try:
         highlight = int(highlight)
@@ -28,7 +28,7 @@ def index(request):
         highlight = None
     
     return render(request, 'app/index.html', {
-        'jokes': jokes.values(),
+        'quotes': quotes.values(),
         'highlight': highlight
     })
 
@@ -37,27 +37,27 @@ def add(request):
     global id
 
     if request.method == 'POST':
-        form = JokeForm(request.POST)
+        form = QuoteForm(request.POST)
         if form.is_valid():
-            id = len(jokes) + 1
-            jokes[id] = {
+            id = len(quotes) + 1
+            quotes[id] = {
                 'id': id,
-                'text': form.cleaned_data['joke'],
+                'text': form.cleaned_data['quote'],
                 'author': form.cleaned_data['author']
             }
             
-            # add GET request parameter to highlight correct joke
+            # add GET request parameter to highlight correct quote
             response = redirect('app:index')
             response['Location'] += f'?highlight={id}'
             return response
     else:
-        form = JokeForm()
+        form = QuoteForm()
 
     return render(request, 'app/add.html', { 'form': form })
 
 # get JSON version of an entry
 def get_user_entry(request, id):
-    entry = jokes.get(id)
+    entry = quotes.get(id)
     if entry is None:
         return JsonResponse({'error': 'Entry does not exist'}, status=404)
     else:
